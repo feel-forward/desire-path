@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Half of the Circle — Listening Match</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="half-circle" aria-hidden="true"></div>
+        <div>
+          <p class="eyebrow">Half of the Circle</p>
+          <h1>Match for a listening ritual</h1>
+          <p class="subtitle">
+            A lightweight way for two people to meet in a shared rhythm: chime, silence,
+            resonance, hum, and then open-ended speaking.
+          </p>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Propose your timing</h2>
+        <p class="muted">
+          Choose your durations and share the link. When someone accepts the same
+          timing, you can begin the ritual together.
+        </p>
+
+        <div class="grid">
+          <div class="control">
+            <label for="chime">Singing bowl chime</label>
+            <input type="range" id="chime" min="30" max="300" step="10" value="90" />
+            <span class="value" data-for="chime">90s</span>
+          </div>
+          <div class="control">
+            <label for="silence">Silence after chime</label>
+            <input type="range" id="silence" min="30" max="300" step="10" value="60" />
+            <span class="value" data-for="silence">60s</span>
+          </div>
+        </div>
+
+        <div class="options">
+          <label class="toggle">
+            <input type="checkbox" id="schumann-enabled" checked />
+            <span>Schumann resonance tone (audible harmonic)</span>
+          </label>
+          <div class="control nested" data-parent="schumann-enabled">
+            <label for="schumann">Schumann tone duration</label>
+            <input type="range" id="schumann" min="30" max="300" step="10" value="60" />
+            <span class="value" data-for="schumann">60s</span>
+          </div>
+
+          <label class="toggle">
+            <input type="checkbox" id="hum-enabled" checked />
+            <span>Hum the resonance together</span>
+          </label>
+          <div class="control nested" data-parent="hum-enabled">
+            <label for="hum">Hum duration</label>
+            <input type="range" id="hum" min="30" max="300" step="10" value="60" />
+            <span class="value" data-for="hum">60s</span>
+          </div>
+        </div>
+
+        <div class="order">
+          <p class="muted">Optional phase order before speaking</p>
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="order" value="schumann-then-hum" checked />
+              Schumann → Hum
+            </label>
+            <label>
+              <input type="radio" name="order" value="hum-then-schumann" />
+              Hum → Schumann
+            </label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="generate">Generate match link</button>
+          <button id="start" class="secondary">Start ritual</button>
+        </div>
+
+        <div class="share" hidden>
+          <p class="muted">Share this link with your match:</p>
+          <div class="share-row">
+            <input type="text" id="share-link" readonly />
+            <button id="copy">Copy</button>
+          </div>
+          <p class="match-status" id="match-status">Waiting for a match…</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Ritual guide</h2>
+        <p class="muted">
+          Posture of listening. Keep time together. No speaking until the final
+          phase.
+        </p>
+        <div class="timeline" id="timeline"></div>
+        <div class="timer">
+          <div>
+            <p class="timer-label">Current phase</p>
+            <h3 id="current-phase">Ready</h3>
+          </div>
+          <div>
+            <p class="timer-label">Time remaining</p>
+            <h3 id="remaining">00:00</h3>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="pause" class="secondary" disabled>Pause</button>
+          <button id="reset" class="secondary" disabled>Reset</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Stay in touch (optional)</h2>
+        <p class="muted">
+          Keep it lightweight. Leave an email if you want to reconnect after a
+          meaningful match.
+        </p>
+        <div class="share-row">
+          <input type="email" id="email" placeholder="you@example.com" />
+          <button id="save-email">Save</button>
+        </div>
+        <p class="muted" id="email-status"></p>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
